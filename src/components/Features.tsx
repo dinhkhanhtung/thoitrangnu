@@ -1,4 +1,7 @@
+'use client';
+
 import { Truck, Shield, RotateCcw, Gift } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const features = [
   {
@@ -29,13 +32,24 @@ export default function Features() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="flex flex-col items-center text-center p-6">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex flex-col items-center text-center p-6"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+                className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4"
+              >
                 <feature.icon className="w-8 h-8 text-orange-600" />
-              </div>
+              </motion.div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
               <p className="text-sm text-gray-600">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

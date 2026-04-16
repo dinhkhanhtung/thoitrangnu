@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const categories = [
   {
@@ -43,27 +46,44 @@ export default function TopCategories() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Danh mục nổi bật</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl font-bold text-gray-900 mb-8"
+        >
+          Danh mục nổi bật
+        </motion.h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
-          {categories.map((category) => (
-            <Link
+          {categories.map((category, index) => (
+            <motion.div
               key={category.id}
-              href={`/san-pham?category=${category.id}`}
-              className="group"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <div className="relative aspect-square rounded-full overflow-hidden mb-3">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
-              </div>
-              <h3 className="text-center font-medium text-gray-900 group-hover:text-orange-600 transition-colors">
-                {category.name}
-              </h3>
-              <p className="text-center text-sm text-gray-500">{category.count} sản phẩm</p>
-            </Link>
+              <Link
+                href={`/san-pham?category=${category.id}`}
+                className="group"
+              >
+                <div className="relative aspect-square rounded-full overflow-hidden mb-3 shadow-md group-hover:shadow-xl transition-shadow duration-300">
+                  <motion.img
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+                </div>
+                <h3 className="text-center font-medium text-gray-900 group-hover:text-orange-600 transition-colors">
+                  {category.name}
+                </h3>
+                <p className="text-center text-sm text-gray-500">{category.count} sản phẩm</p>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

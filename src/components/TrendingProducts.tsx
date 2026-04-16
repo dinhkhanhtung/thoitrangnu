@@ -1,6 +1,9 @@
+'use client';
+
 import ProductCard from './ProductCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
+import { motion } from 'framer-motion';
 
 const trendingProducts = [
   {
@@ -45,7 +48,13 @@ export default function TrendingProducts() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-between mb-8"
+        >
           <h2 className="text-3xl font-bold text-gray-900">Sản phẩm xu hướng</h2>
           <div className="flex gap-2">
             <Button variant="outline" size="icon">
@@ -55,10 +64,18 @@ export default function TrendingProducts() {
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
-        </div>
+        </motion.div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trendingProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+          {trendingProducts.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProductCard {...product} />
+            </motion.div>
           ))}
         </div>
       </div>

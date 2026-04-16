@@ -1,4 +1,7 @@
+'use client';
+
 import ProductCard from './ProductCard';
+import { motion } from 'framer-motion';
 
 const bestSellingProducts = [
   {
@@ -63,10 +66,26 @@ export default function BestSellingProducts() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Sản phẩm bán chạy</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl font-bold text-gray-900 mb-8"
+        >
+          Sản phẩm bán chạy
+        </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {bestSellingProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+          {bestSellingProducts.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+            >
+              <ProductCard {...product} />
+            </motion.div>
           ))}
         </div>
       </div>
