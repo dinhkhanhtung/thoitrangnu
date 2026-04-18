@@ -28,16 +28,16 @@ export default function ProductCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
-      className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300"
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.4 }}
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
     >
       {/* Image */}
       <Link href={`/san-pham/${id}`}>
-        <div className="aspect-[3/4] overflow-hidden bg-gray-100">
+        <div className="aspect-[3/4] overflow-hidden bg-gray-50">
           <motion.img
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.5 }}
             src={image}
             alt={name}
             className="w-full h-full object-cover"
@@ -47,7 +47,7 @@ export default function ProductCard({
 
       {/* Sale Badge */}
       {sale && (
-        <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded shadow-md">
+        <div className="absolute top-4 left-4 bg-amber-700 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg">
           Sale
         </div>
       )}
@@ -56,29 +56,29 @@ export default function ProductCard({
       <motion.div
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
-        className="absolute top-3 right-3 flex flex-col gap-2"
+        className="absolute top-4 right-4 flex flex-col gap-2"
       >
         <Button
           size="icon"
           variant="secondary"
-          className="w-8 h-8 rounded-full bg-white shadow-md hover:bg-orange-600 hover:text-white"
+          className="w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm shadow-md hover:bg-amber-700 hover:text-white transition-colors"
         >
           <Heart className="w-4 h-4" />
         </Button>
       </motion.div>
 
       {/* Content */}
-      <div className="p-4">
+      <div className="p-6">
         {category && (
-          <p className="text-xs text-gray-500 mb-1">{category}</p>
+          <p className="text-xs text-gray-500 mb-2 font-medium tracking-wide uppercase">{category}</p>
         )}
         <Link href={`/san-pham/${id}`}>
-          <h3 className="font-medium text-gray-900 mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">
+          <h3 className="font-medium text-gray-900 mb-3 line-clamp-2 group-hover:text-amber-700 transition-colors text-base leading-relaxed">
             {name}
           </h3>
         </Link>
-        <div className="flex items-center gap-2">
-          <span className="text-lg font-bold text-orange-600">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-lg font-semibold text-gray-900">
             {price.toLocaleString('vi-VN')}₫
           </span>
           {originalPrice && (
@@ -88,7 +88,7 @@ export default function ProductCard({
           )}
         </div>
         <Button
-          className="w-full mt-3 bg-orange-600 hover:bg-orange-700"
+          className="w-full bg-gray-900 hover:bg-gray-800 text-white"
           size="sm"
         >
           <ShoppingCart className="w-4 h-4 mr-2" />

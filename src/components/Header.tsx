@@ -16,17 +16,17 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold tracking-tight">
-            Fashion<span className="text-orange-600">Store</span>
+          <Link href="/" className="text-2xl font-light tracking-tight">
+            Fashion<span className="text-amber-700 font-normal">Store</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
-            <Link href="/" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+          <nav className="hidden lg:flex items-center gap-8">
+            <Link href="/" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
               Trang chủ
             </Link>
 
@@ -36,17 +36,17 @@ export default function Header() {
               onMouseEnter={() => setIsDropdownOpen('nam')}
               onMouseLeave={() => setIsDropdownOpen(null)}
             >
-              <button className="flex items-center gap-1 text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <button className="flex items-center gap-1 text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Nam
                 <ChevronDown className="w-4 h-4" />
               </button>
               {isDropdownOpen === 'nam' && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2">
+                <div className="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-3">
                   {categories.nam.map((item) => (
                     <Link
                       key={item}
                       href={`/san-pham?category=${encodeURIComponent(item)}`}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                      className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-700 transition-colors font-light"
                     >
                       {item}
                     </Link>
@@ -61,17 +61,17 @@ export default function Header() {
               onMouseEnter={() => setIsDropdownOpen('nu')}
               onMouseLeave={() => setIsDropdownOpen(null)}
             >
-              <button className="flex items-center gap-1 text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <button className="flex items-center gap-1 text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Nữ
                 <ChevronDown className="w-4 h-4" />
               </button>
               {isDropdownOpen === 'nu' && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2">
+                <div className="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-3">
                   {categories.nu.map((item) => (
                     <Link
                       key={item}
                       href={`/san-pham?category=${encodeURIComponent(item)}`}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                      className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-700 transition-colors font-light"
                     >
                       {item}
                     </Link>
@@ -86,17 +86,17 @@ export default function Header() {
               onMouseEnter={() => setIsDropdownOpen('treem')}
               onMouseLeave={() => setIsDropdownOpen(null)}
             >
-              <button className="flex items-center gap-1 text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <button className="flex items-center gap-1 text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Trẻ em
                 <ChevronDown className="w-4 h-4" />
               </button>
               {isDropdownOpen === 'treem' && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border py-2">
+                <div className="absolute top-full left-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-3">
                   {categories.treem.map((item) => (
                     <Link
                       key={item}
                       href={`/san-pham?category=${encodeURIComponent(item)}`}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                      className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-700 transition-colors font-light"
                     >
                       {item}
                     </Link>
@@ -105,23 +105,23 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/san-pham" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+            <Link href="/san-pham" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
               Sản phẩm
             </Link>
-            <Link href="/ve-chung-toi" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+            <Link href="/ve-chung-toi" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
               Về chúng tôi
             </Link>
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon">
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="icon" className="hover:bg-gray-100">
               <Search className="w-5 h-5" />
             </Button>
             <Link href="/gio-hang">
-              <Button variant="ghost" size="icon" className="relative">
+              <Button variant="ghost" size="icon" className="relative hover:bg-gray-100">
                 <ShoppingCart className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-amber-700 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   0
                 </span>
               </Button>
@@ -129,7 +129,7 @@ export default function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden hover:bg-gray-100"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <Menu className="w-5 h-5" />
@@ -139,24 +139,24 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden py-4 border-t">
+          <nav className="lg:hidden py-6 border-t border-gray-100">
             <div className="flex flex-col gap-4">
-              <Link href="/" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <Link href="/" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Trang chủ
               </Link>
-              <Link href="/san-pham?gender=nam" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <Link href="/san-pham?gender=nam" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Nam
               </Link>
-              <Link href="/san-pham?gender=nu" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <Link href="/san-pham?gender=nu" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Nữ
               </Link>
-              <Link href="/san-pham?gender=treem" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <Link href="/san-pham?gender=treem" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Trẻ em
               </Link>
-              <Link href="/san-pham" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <Link href="/san-pham" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Sản phẩm
               </Link>
-              <Link href="/ve-chung-toi" className="text-gray-700 hover:text-orange-600 transition-colors font-medium">
+              <Link href="/ve-chung-toi" className="text-gray-700 hover:text-amber-700 transition-colors font-light tracking-wide">
                 Về chúng tôi
               </Link>
             </div>

@@ -26,9 +26,9 @@ const propositions = [
 
 export default function ValuePropositions() {
   return (
-    <section className="py-16 bg-gradient-to-br from-orange-50 to-white">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="py-24 md:py-32 bg-gradient-to-br from-gray-50 to-white">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {propositions.map((prop, index) => (
             <motion.div
               key={index}
@@ -36,16 +36,16 @@ export default function ValuePropositions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6">
-                <prop.icon className="w-8 h-8 text-orange-600" />
+              <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mb-8">
+                <prop.icon className="w-8 h-8 text-amber-700" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{prop.title}</h3>
-              <p className="text-gray-600 mb-4">{prop.description}</p>
+              <h3 className="text-xl font-light text-gray-900 mb-4 tracking-tight">{prop.title}</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed font-light">{prop.description}</p>
               <a
                 href={prop.link}
-                className="text-orange-600 font-medium hover:text-orange-700 transition-colors"
+                className="text-amber-700 font-medium hover:text-amber-800 transition-colors text-sm tracking-wide"
               >
                 Khám phá ngay →
               </a>
